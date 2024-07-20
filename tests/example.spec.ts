@@ -1,6 +1,6 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "@playwright/test"
 
 test("do this thing", () => {
-  const jsonVal = { 69: 420 };
-  expect(jsonVal[69]).toBe(420);
-});
+  const jsonVal = { 69: 420 }
+  expect(jsonVal[69]).toBe(420)
+})

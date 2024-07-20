@@ -1,9 +1,9 @@
-import dotenv from "dotenv";
-import type { Config } from "drizzle-kit";
+import dotenv from "dotenv"
+import type { Config } from "drizzle-kit"
 
 dotenv.config({
   path: ".env.local",
-});
+})
 
 export default {
   schema: "./src/schema.ts",
@@ -12,4 +12,4 @@ export default {
   dbCredentials: {
     url: process.env.NEON_DB_CONNECTION_STRING!,
   },
-} satisfies Config;
+} satisfies Config
