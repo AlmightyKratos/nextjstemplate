@@ -3,7 +3,22 @@ Comes with shadcn, playwright, and drizzle pre-installed.
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies
+
+```bash
+pnpm install
+```
+
+Secondly, add the required environment variables -
+
+1. Create a .env.local file in the root directory
+2. Create the following environment variables: AUTH_GITHUB_ID, AUTH_GITHUB_SECRET, AUTH_SECRET, NEON_DB_CONNECTION_STRING
+
+By creating a new OAuth app in Github, you will generate a Client ID (AUTH_GITHUB_ID) and Client Secret (AUTH_GITHUB_SECRET).
+Generate your AUTH_SECRET by running `npx auth`.
+Your NEON_DB_CONNECTION_STRING is found by going to your Neon dashboard and using the connection string for a pooled connection.
+
+Then run the local development server.
 
 ```bash
 pnpm dev
