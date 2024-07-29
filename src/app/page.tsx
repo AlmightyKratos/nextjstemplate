@@ -1,5 +1,7 @@
 import { auth, signIn, signOut } from "@/auth"
+import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { FirstPopover } from "@/components/mine/FirstPopover"
 
 const AuthUserCard = async () => {
   const session = await auth()
@@ -36,7 +38,7 @@ const AuthUserCard = async () => {
           await signOut()
         }}
       >
-        <button type="submit">Signout</button>
+        <Button type="submit">Signout</Button>
       </form>
     </div>
   )
@@ -44,11 +46,11 @@ const AuthUserCard = async () => {
 
 export default function Home() {
   return (
-    <main className="grid min-h-screen place-items-center">
-      <div>
+    <div className="grid min-h-screen place-items-center">
+      <div className="flex flex-col items-center gap-32">
         <AuthUserCard />
-        Hello World!
+        <FirstPopover />
       </div>
-    </main>
+    </div>
   )
 }

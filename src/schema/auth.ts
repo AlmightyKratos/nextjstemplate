@@ -1,23 +1,13 @@
-import { Pool } from "@neondatabase/serverless"
 import {
   boolean,
   timestamp,
   text,
   primaryKey,
   integer,
-  pgTableCreator,
 } from "drizzle-orm/pg-core"
-import { drizzle } from "drizzle-orm/neon-serverless"
 
 import type { AdapterAccountType } from "next-auth/adapters"
-
-const pool = new Pool({
-  connectionString: process.env.NEON_DB_CONNECTION_STRING!,
-})
-
-export const db = drizzle(pool)
-
-const pgTable = pgTableCreator((name) => `mynewdb_${name}`)
+import { pgTable } from "./db"
 
 export const users = pgTable("user", {
   id: text("id")
