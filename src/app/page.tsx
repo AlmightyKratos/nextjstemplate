@@ -1,7 +1,7 @@
-import { auth, signIn, signOut } from "@/auth"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
 import { FirstPopover } from "@/components/mine/FirstPopover"
+import { Button } from "@/components/ui/button"
+import { auth, signIn, signOut } from "@/auth"
+import Image from "next/image"
 
 const AuthUserCard = async () => {
   const session = await auth()

@@ -1,6 +1,6 @@
 import { text } from "drizzle-orm/pg-core"
-import { pgTable } from "./db"
 import { users } from "./auth"
+import { pgTable } from "./db"
 
 export const tasks = pgTable("tasks", {
   id: text("id")
