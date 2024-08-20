@@ -27,8 +27,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install
+
       - name: Run Playwright tests
-        run: pnpm playwright test
+        run: pnpm exec playwright test
 
       - name: Upload Playwright report
         if: failure()
