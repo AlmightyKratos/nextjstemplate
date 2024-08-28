@@ -10,6 +10,6 @@ export default {
   out: "./drizzle",
   dialect: "postgresql",
   dbCredentials: {
-    url: process.env.NEON_DB_CONNECTION_STRING!,
+    url: process.env.DATABASE_URL!,
   },
 } satisfies Config
