@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  DATABASE_URL: DOESNT_MATTER
+  DATABASE_URL: postgresql://AlmightyKratos:test@user.placeholder
 
 jobs:
   test:
