@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+env:
+  DATABASE_URL: DOESNT_MATTER
+
 jobs:
   test:
     runs-on: ubuntu-latest
