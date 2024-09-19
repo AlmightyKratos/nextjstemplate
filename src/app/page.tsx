@@ -1,5 +1,6 @@
 import { AuthUserCard } from "../components/mine/AuthUserCard"
 import { FirstPopover } from "@/components/mine/FirstPopover"
+import { ThemeToggle } from "@/components/mine/ThemeToggle"
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <div className="flex flex-col items-center gap-32">
         <AuthUserCard />
         <FirstPopover />
+        <ThemeToggle />
       </div>
     </div>
   )

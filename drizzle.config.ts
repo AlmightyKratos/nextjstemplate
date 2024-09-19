@@ -1,6 +1,6 @@
 import type { Config } from "drizzle-kit"
-import { env } from "@/env"
 import dotenv from "dotenv"
+import { env } from "@/env"
 
 dotenv.config({
   path: ".env.local",
