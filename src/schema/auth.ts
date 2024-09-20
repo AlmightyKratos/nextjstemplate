@@ -9,7 +9,7 @@ import {
 import type { AdapterAccountType } from "next-auth/adapters"
 import { pgTable } from "./db"
 
-export const users = pgTable("user", {
+export const usersDB = pgTable("user", {
   id: text("id")
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
@@ -19,12 +19,12 @@ export const users = pgTable("user", {
   image: text("image"),
 })
 
-export const accounts = pgTable(
+export const accountsDB = pgTable(
   "account",
   {
     userId: text("userId")
       .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
+      .references(() => usersDB.id, { onDelete: "cascade" }),
     type: text("type").$type<AdapterAccountType>().notNull(),
     provider: text("provider").notNull(),
     providerAccountId: text("providerAccountId").notNull(),
@@ -43,11 +43,11 @@ export const accounts = pgTable(
   }),
 )
 
-export const sessions = pgTable("session", {
+export const sessionsDB = pgTable("session", {
   sessionToken: text("sessionToken").primaryKey(),
   userId: text("userId")
     .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
+    .references(() => usersDB.id, { onDelete: "cascade" }),
   expires: timestamp("expires", { mode: "date" }).notNull(),
 })
 
@@ -65,13 +65,13 @@ export const verificationTokens = pgTable(
   }),
 )
 
-export const authenticators = pgTable(
+export const authenticatorsDB = pgTable(
   "authenticator",
   {
     credentialID: text("credentialID").notNull().unique(),
     userId: text("userId")
       .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
+      .references(() => usersDB.id, { onDelete: "cascade" }),
     providerAccountId: text("providerAccountId").notNull(),
     credentialPublicKey: text("credentialPublicKey").notNull(),
     counter: integer("counter").notNull(),

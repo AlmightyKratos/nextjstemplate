@@ -1,3 +1,11 @@
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
 import { auth, signIn, signOut } from "@/auth"
 import Image from "next/image"
@@ -6,14 +14,39 @@ export const AuthUserCard = async () => {
   const session = await auth()
   if (!session?.user)
     return (
-      <form
-        action={async () => {
-          "use server"
-          await signIn("github")
-        }}
-      >
-        <button type="submit">Signin with GitHub</button>
-      </form>
+      <DropdownMenu>
+        <DropdownMenuTrigger>Sign In</DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem>
+            <form
+              action={async () => {
+                "use server"
+                await signIn("github")
+              }}
+            >
+              <button type="submit">Signin with GitHub</button>
+            </form>
+          </DropdownMenuItem>
+          {/* <DropdownMenuItem> */}
+          <form
+            action={async (formData) => {
+              "use server"
+              await signIn("credentials", formData)
+            }}
+          >
+            <label>
+              Email
+              <input name="email" type="email" />
+            </label>
+            <label>
+              Password
+              <input name="password" type="password" />
+            </label>
+            <button>Sign In</button>
+          </form>
+          {/* </DropdownMenuItem> */}
+        </DropdownMenuContent>
+      </DropdownMenu>
     )
   return (
     <div className="flex flex-row items-center gap-20">

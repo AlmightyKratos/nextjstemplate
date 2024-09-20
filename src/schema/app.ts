@@ -1,11 +1,11 @@
 import { text } from "drizzle-orm/pg-core"
-import { users } from "./auth"
+import { usersDB } from "./auth"
 import { pgTable } from "./db"
 
-export const tasks = pgTable("tasks", {
+export const tasksDB = pgTable("tasks", {
   id: text("id")
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
   name: text("name").notNull(),
-  userId: text("user_id").references(() => users.id),
+  userId: text("user_id").references(() => usersDB.id),
 })
